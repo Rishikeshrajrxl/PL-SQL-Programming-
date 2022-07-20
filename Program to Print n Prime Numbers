@@ -1,0 +1,19 @@
+Declare 
+num number := :Any_Number;
+counter number;
+
+Begin  
+        for j IN 2..num Loop
+            counter := 0;
+            for i IN 1..j Loop
+                if mod(j,i) = 0 Then
+                    counter := counter +1;
+                End if;
+            End Loop;
+            if counter = 2 Then
+                dbms_output.put_line(j);
+            End if;
+        End Loop;
+End;
+
+
