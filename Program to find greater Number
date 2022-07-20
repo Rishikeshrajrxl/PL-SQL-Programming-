@@ -1,0 +1,17 @@
+declare 
+    x number :=:x1;
+    y number :=:y2;
+    z number :=:z3;
+begin
+    if x > y then
+        if x > z then
+            dbms_output.put_line(x || ' is greater');
+        else
+            dbms_output.put_line(z || ' is greater');
+        end if;
+    elsif y > z then
+        dbms_output.put_line(y || ' is greater');
+    else
+        dbms_output.put_line(z || ' is greater');
+    end if;
+end;
