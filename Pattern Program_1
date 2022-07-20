@@ -1,0 +1,14 @@
+Declare 
+row number := :Enter_Number_of_rows_to_print;
+astrick varchar(100);
+
+Begin
+    for i In 1..row Loop
+        for j In 1..i Loop
+            astrick := concat(astrick,' * ');
+        End Loop;
+        dbms_output.put_line(astrick);
+        astrick := '';
+    End Loop;
+End;
+            
