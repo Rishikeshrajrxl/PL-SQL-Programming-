@@ -1,0 +1,15 @@
+create trigger Emp_Audit_Trigger
+Before Insert or update ON Employee
+For Each Row
+Enable
+Declare
+    C_Date varchar(50):= to_char(sysdate,'DD/MM/YYYY');
+Begin
+    If INSERTING Then
+        insert into Emp_Audit(Emp_Name,Old_Salary,New_Salary,Change_Date,Operation)
+        Values(:NEW.Emp_Name,'NULL',:NEW.Salary,C_Date,'Insert');
+    Elsif UPDATING Then
+        insert into Emp_Audit(Emp_Name,Old_Salary,New_Salary,Change_Date,Operation)
+        Values(:OLD.Emp_Name,:OLD.Salary,:NEW.Salary,C_Date,'Update');
+    End If;
+End;
